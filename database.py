@@ -27,7 +27,7 @@ class NEODatabase:
         self._neos = neos
         self._approaches = approaches
 
-        # TODO: What additional auxiliary data structures will be useful?
+        # Create additional empty dictionaries as an auxiliary data structure
         self.d_designation = {}
         self.d_name = {}
         
@@ -35,7 +35,7 @@ class NEODatabase:
             self.d_designation[neo.designation] = neo # neo.designation: whole neo
             self.d_name[neo.name] = neo # neo.name : whole neo
             
-        # TODO: Link together the NEOs and their close approaches.
+        # Linking together the NEOs and their close approaches.
         for approach in self._approaches:
             neo = self.d_designation[approach._designation] #get the approach neo from the value found in the des.key
             neo.approaches.append(approach) # the neo approaches from empty list to a list of approaches
@@ -54,7 +54,7 @@ class NEODatabase:
         :param designation: The primary designation of the NEO to search for.
         :return: The `NearEarthObject` with the desired primary designation, or `None`.
         """
-        # TODO: Fetch an NEO by its primary designation.
+        # Getting an NEO by its primary designation.
         try:
             return self.d_designation[designation]
         except KeyError:
@@ -75,7 +75,7 @@ class NEODatabase:
         :param name: The name, as a string, of the NEO to search for.
         :return: The `NearEarthObject` with the desired name, or `None`.
         """
-        # TODO: Fetch an NEO by its name.
+        # Getting an NEO by its name.
         try:
             return self.d_name[name]
         except KeyError:
@@ -98,7 +98,7 @@ class NEODatabase:
         # Case 1: No arguments
         if filters == ():
             return self._approaches
-        # TODO: Generate `CloseApproach` objects that match all of the filters.
+        # Generating `CloseApproach` objects that match all of the filters.
         
         for approach in self._approaches:
             matches = list(map(lambda f: f(approach), filters))
