@@ -10,11 +10,9 @@ formatted as described in the project instructions, into a collection of
 The main module calls these functions with the arguments provided at the command
 line, and uses the resulting collections to build an `NEODatabase`.
 
-You'll edit this file in Task 2.
 """
 import csv
 import json
-
 from models import NearEarthObject, CloseApproach
 
 
@@ -58,7 +56,7 @@ def load_approaches(cad_json_path):
     :param neo_csv_path: A path to a JSON file containing data about close approaches.
     :return: A collection of `CloseApproach`es.
     """
-    # TODO: Load close approach data from the given JSON file.
+    # Loading close approach data from the given JSON file.
     with open(cad_json_path,"r") as infile:
         data = json.load(infile)
     
