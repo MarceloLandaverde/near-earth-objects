@@ -14,7 +14,6 @@ the supplied `CloseApproach`.
 The `limit` function simply limits the maximum number of values produced by an
 iterator.
 
-You'll edit this file in Tasks 3a and 3c.
 """
 import operator
 from itertools import islice
@@ -102,7 +101,7 @@ class HazardousFilter(AttributeFilter):
     
     
 
-
+# Filters function
 def create_filters(date=None, start_date=None, end_date=None,
                    distance_min=None, distance_max=None,
                    velocity_min=None, velocity_max=None,
@@ -138,9 +137,9 @@ def create_filters(date=None, start_date=None, end_date=None,
     :return: A collection of filters for use with `query`.
     """
         
-    # TODO: Decide how you will represent your filters.
-    requested_filters = []
     
+    requested_filters = []
+    # For each filter type get the inputed value if exists and append it to the filter's list
     if date:
         requested_filters.append(DateFilter(operator.eq,date))
 
@@ -185,7 +184,7 @@ def limit(iterator, n=None):
     :param n: The maximum number of values to produce.
     :yield: The first (at most) `n` values from the iterator.
     """
-    # TODO: Produce at most `n` values from the given iterator.
+    
     if n is None or n == 0:
         return islice(iterator, None)
     else:
