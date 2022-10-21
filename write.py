@@ -8,7 +8,6 @@ These functions are invoked by the main module with the output of the `limit`
 function and the filename supplied by the user at the command line. The file's
 extension determines which of these functions is used.
 
-You'll edit this file in Part 4.
 """
 import csv
 import json
@@ -25,18 +24,20 @@ def write_to_csv(results, filename):
     :param filename: A Path-like object pointing to where the data should be saved.
     """
     fieldnames = ('datetime_utc', 'distance_au', 'velocity_km_s', 'designation', 'name', 'diameter_km', 'potentially_hazardous')
-    # TODO: Write the results to a CSV file, following the specification in the instructions.
     rows = [list(fieldnames)]
     
     for a in results:
         r = [datetime_to_str(a.time),a.distance, a.velocity, a.neo.designation, a.neo.name, a.neo.diameter, a.neo.hazardous]
         
+        # Be sure that the name attribute is not None
         if r[4] == None:
             r[4] = ""
+        # Be sure that the Hazardous values are strings
         r[6] = str(r[6]).capitalize()
     
         rows.append(r)
-        
+    
+    # Generate csv output file    
     with open(filename,"w") as outfile:
         writer = csv.writer(outfile,lineterminator="\n")
         for r in rows:
@@ -67,7 +68,8 @@ def write_to_json(results, filename):
                     "potentially_hazardous": a.neo.hazardous}
 
         top_level.append(d)
-
+    
+    # Be sure that the name attribute is not None
     for e in top_level:
         if e["neo"]["name"] == None:
             e["neo"]["name"] = ""
