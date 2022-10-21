@@ -15,7 +15,6 @@ The functions that construct these objects use information extracted from the
 data files from NASA, so these objects should be able to handle all of the
 quirks of the data set, such as missing names and unknown diameters.
 
-You'll edit this file in Task 1.
 """
 from helpers import cd_to_datetime, datetime_to_str
 
@@ -32,8 +31,7 @@ class NearEarthObject:
     initialized to an empty collection, but eventually populated in the
     `NEODatabase` constructor.
     """
-    # TODO: How can you, and should you, change the arguments to this constructor?
-    # If you make changes, be sure to update the comments in this file.
+    
     def __init__(self,designation,name,diameter,hazardous,approaches=[]):
         """Create a new `NearEarthObject`.
 
